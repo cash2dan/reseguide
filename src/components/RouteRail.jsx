@@ -1,0 +1,32 @@
+import React from "react";
+import { MUTE, rgba } from "../lib/palette";
+
+export default function RouteRail({ days, sel, setSel, todayIdx }) {
+  return (
+    <div className="px-3 py-3 overflow-x-auto bg-white" style={{ borderBottom: `1px solid #EAF1EC` }}>
+      <div className="flex items-stretch gap-1.5 min-w-max">
+        {days.map((d, i) => {
+          const active = i === sel;
+          const isToday = i === todayIdx;
+          return (
+            <button
+              key={d.n}
+              onClick={() => setSel(i)}
+              className="flex flex-col items-center px-2.5 py-2 rounded-xl transition-all"
+              style={{
+                minWidth: 58,
+                background: active ? d.color : rgba(d.color, 0.08),
+                boxShadow: active ? `0 4px 12px ${rgba(d.color, 0.35)}` : "none",
+                border: isToday && !active ? `1.5px solid ${d.color}` : "1.5px solid transparent",
+              }}
+            >
+              <span className="text-[9px] font-bold uppercase tracking-wide" style={{ color: active ? "rgba(255,255,255,0.85)" : MUTE }}>Dag</span>
+              <span className="text-lg font-extrabold leading-none" style={{ color: active ? "#fff" : d.color }}>{d.n}</span>
+              <span className="text-[9px] mt-0.5 font-medium" style={{ color: active ? "rgba(255,255,255,0.85)" : MUTE }}>{d.date.split(" ")[0]}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
