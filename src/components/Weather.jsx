@@ -18,7 +18,11 @@ function iconFor(code) {
 }
 
 function weatherUrl(coords, iso) {
-  return `https://www.yr.no/en/forecast/hourly-table/${coords[0]},${coords[1]}/${iso}`;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const target = new Date(iso + "T00:00:00");
+  const i = Math.max(0, Math.round((target - today) / 86400000));
+  return `https://www.yr.no/en/forecast/hourly-table/${coords[0]},${coords[1]}/?i=${i}`;
 }
 
 // variant: "banner" (white on colored bg) or "plain" (colored on light bg)
