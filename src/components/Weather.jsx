@@ -18,7 +18,7 @@ function iconFor(code) {
 }
 
 function weatherUrl(coords, iso) {
-  return `https://www.yr.no/en/forecast/daily-table/${coords[0]},${coords[1]}#${iso}`;
+  return `https://www.yr.no/en/forecast/hourly-table/${coords[0]},${coords[1]}/${iso}`;
 }
 
 // variant: "banner" (white on colored bg) or "plain" (colored on light bg)
