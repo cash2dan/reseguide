@@ -47,6 +47,7 @@ export const DAYS = [
     title: "Lübeck → Bernkastel-Kues", base: "Bernkastel-Kues (1/3)",
     drive: "ca 62–67 mil inkl. avstickare", vibe: "Resdag med sceniskt slut",
     note: "Naturskön Mosel-infart: vik av vid Koblenz och följ B49/B416/B53 längs floden via Cochem – ~30 min längre men vingårdar och flodkröker hela vägen.",
+    stay: { name: "Roussel Hotel Restaurant, Bernkastel-Kues", meal: "Frukost ingår", map: gsearch("Roussel Hotel Restaurant Bernkastel-Kues") },
     map: gmap(["Lübeck, Germany", "IONITY Allertal, Germany", "IONITY Köln-Nord, Germany", "Burg Eltz Parkplatz Antoniuskapelle, Wierschem", "Cochem, Germany", "Bernkastel-Kues, Germany"]),
     mapLabel: "Lübeck → Burg Eltz → naturskön Mosel → Bernkastel",
     legs: [
@@ -59,7 +60,7 @@ export const DAYS = [
       "Burg Eltz syns fint från utsiktsstigen vid Wierschem – ~20 min promenad, ingen entré.",
       "Natursköna Mosel-vägen går via Cochem (fin fikaby med borg).",
       "Bernkastel-Kues: korsvirkeshus på torget, bra bas för tre nätter.",
-      "Boka boende med parkering/laddning centralt.",
+      "Roussel Hotel Restaurant bokat för alla tre nätterna, frukost ingår.",
     ],
     plan: [
       ["08:00", "Avfärd Lübeck"],
@@ -75,6 +76,7 @@ export const DAYS = [
     n: 3, date: "Sön 12 juli", iso: "2026-07-12", color: "#9C6B3F", icon: "bike",
     title: "Moseldalen – cykeldag", base: "Bernkastel-Kues (2/3)",
     drive: "lokal cykeltur, ingen bil", vibe: "Full aktivitetsdag, lugnt tempo",
+    stay: { name: "Roussel Hotel Restaurant, Bernkastel-Kues", meal: "Frukost ingår", map: gsearch("Roussel Hotel Restaurant Bernkastel-Kues") },
     map: gmap(["Bernkastel-Kues, Germany", "Zeltingen-Rachtig, Germany", "Ürzig, Germany", "Traben-Trarbach, Germany", "Bernkastel-Kues, Germany"]),
     mapLabel: "Cykelslinga: Zeltingen → Ürzig → Traben-Trarbach → åter",
     see: [
@@ -97,6 +99,7 @@ export const DAYS = [
     title: "Moseldalen – lugn dag (välj efter väder)", base: "Bernkastel-Kues (3/3)",
     drive: "valfritt – från 0 till ~5 mil", vibe: "Ladda batterierna inför alp-körningen",
     note: "Basplanen är en lugn dag i Bernkastel före den långa körningen till Österrike. Men beroende på väder och lust finns flera utflykter inom räckhåll – se Tips & alternativ nedan.",
+    stay: { name: "Roussel Hotel Restaurant, Bernkastel-Kues", meal: "Frukost ingår", map: gsearch("Roussel Hotel Restaurant Bernkastel-Kues") },
     map: gsearch("Burg Landshut Bernkastel-Kues"),
     mapLabel: "Promenad upp till Burg Landshut för utsikten",
     see: [
