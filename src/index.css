@@ -13,3 +13,9 @@ html, body, #root {
   user-select: none;
 }
 a { -webkit-user-select: auto; user-select: auto; }
+
+@keyframes dayIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+.animate-day { animation: dayIn 0.28s ease both; }

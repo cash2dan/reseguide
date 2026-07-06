@@ -6,6 +6,7 @@ import {
 import { BRAND, INK, MIST, MUTE, rgba } from "../lib/palette";
 import Collapsible from "./Collapsible";
 import MapButton from "./MapButton";
+import Weather from "./Weather";
 
 const ICONS = {
   anchor: Anchor, grape: Grape, bike: Bike, mountain: Mountain,
@@ -43,10 +44,11 @@ export default function DayCard({ day, checklist }) {
             <div className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0" style={{ background: rgba("#FFFFFF", 0.16) }}>
               <Icon size={24} color="#fff" />
             </div>
-            <div>
+            <div className="flex-1 min-w-0">
               <div className="text-[11px] uppercase tracking-[0.18em] font-semibold" style={{ color: rgba("#FFFFFF", 0.82) }}>Dag {day.n} · {day.date}</div>
               <div className="text-white font-bold text-[17px] leading-tight mt-0.5">{day.title}</div>
             </div>
+            <Weather coords={day.coords} iso={day.iso} variant="banner" />
           </div>
           <div className="grid grid-cols-3 bg-white">
             {[["Körning", day.drive], ["Bas", day.base], ["Karaktär", day.vibe]].map(([l, v], i) => (

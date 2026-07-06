@@ -15,6 +15,7 @@ export const TRIP = {
 export const DAYS = [
   {
     n: 1, date: "Fre 10 juli", iso: "2026-07-10", color: "#3E6D8E", icon: "anchor",
+    coords: [53.8655, 10.6866],
     title: "Linköping → Lübeck", base: "Lübeck (Altstadt)",
     drive: "ca 68–73 mil + färja", vibe: "Lång men lugn resdag",
     stay: { name: "Premier Inn Lübeck City Centre", meal: "Frukost ingår", map: gsearch("Premier Inn Lübeck City Centre") },
@@ -44,6 +45,7 @@ export const DAYS = [
   },
   {
     n: 2, date: "Lör 11 juli", iso: "2026-07-11", color: "#7A4E7E", icon: "grape",
+    coords: [49.9137, 7.0689],
     title: "Lübeck → Bernkastel-Kues", base: "Bernkastel-Kues (1/3)",
     drive: "ca 62–67 mil inkl. avstickare", vibe: "Resdag med sceniskt slut",
     note: "Naturskön Mosel-infart: vik av vid Koblenz och följ B49/B416/B53 längs floden via Cochem – ~30 min längre men vingårdar och flodkröker hela vägen.",
@@ -74,6 +76,7 @@ export const DAYS = [
   },
   {
     n: 3, date: "Sön 12 juli", iso: "2026-07-12", color: "#9C6B3F", icon: "bike",
+    coords: [49.9137, 7.0689],
     title: "Moseldalen – cykeldag", base: "Bernkastel-Kues (2/3)",
     drive: "lokal cykeltur, ingen bil", vibe: "Full aktivitetsdag, lugnt tempo",
     stay: { name: "Roussel Hotel Restaurant, Bernkastel-Kues", meal: "Frukost ingår", map: gsearch("Roussel Hotel Restaurant Bernkastel-Kues") },
@@ -96,6 +99,7 @@ export const DAYS = [
   },
   {
     n: 4, date: "Mån 13 juli", iso: "2026-07-13", color: "#6E7F5B", icon: "wine",
+    coords: [49.9137, 7.0689],
     title: "Moseldalen – lugn dag (välj efter väder)", base: "Bernkastel-Kues (3/3)",
     drive: "valfritt – från 0 till ~5 mil", vibe: "Ladda batterierna inför alp-körningen",
     note: "Basplanen är en lugn dag i Bernkastel före den långa körningen till Österrike. Men beroende på väder och lust finns flera utflykter inom räckhåll – se Tips & alternativ nedan.",
@@ -126,6 +130,7 @@ export const DAYS = [
   },
   {
     n: 5, date: "Tis 14 juli", iso: "2026-07-14", color: "#2E5339", icon: "mountain",
+    coords: [47.2667, 12.5667],
     title: "Moseldalen → Uttendorf", base: "Uttendorf · Stubacher Hof (1/3)",
     drive: "ca 65–75 mil", vibe: "Ren transportdag",
     stay: { name: "Stubacher Hof, Uttendorf", meal: "Halvpension (frukost + 3-rätters middag)", map: gsearch("Stubacher Hof Uttendorf") },
@@ -155,6 +160,7 @@ export const DAYS = [
   },
   {
     n: 6, date: "Ons 15 juli", iso: "2026-07-15", color: "#3B7A6E", icon: "mountain-snow",
+    coords: [47.2667, 12.5667],
     title: "Kaprun & Kitzsteinhorn", base: "Uttendorf · Stubacher Hof (2/3)",
     drive: "ca 3–5 mil enkel väg", vibe: "Lokal dagsutflykt",
     stay: { name: "Stubacher Hof, Uttendorf", meal: "Halvpension (frukost + 3-rätters middag)", map: gsearch("Stubacher Hof Uttendorf") },
@@ -182,6 +188,7 @@ export const DAYS = [
   },
   {
     n: 7, date: "Tors 16 juli", iso: "2026-07-16", color: "#5B8C5A", icon: "flower",
+    coords: [47.2667, 12.5667],
     title: "Sound of Music-alpdag", base: "Uttendorf · Stubacher Hof (3/3)",
     drive: "ca 2–3 mil lokalt (mer vid Grossglockner-tips)", vibe: "Scenic, lugn alpdag",
     stay: { name: "Stubacher Hof, Uttendorf", meal: "Halvpension (frukost + 3-rätters middag)", map: gsearch("Stubacher Hof Uttendorf") },
@@ -209,6 +216,7 @@ export const DAYS = [
   },
   {
     n: 8, date: "Fre 17 juli", iso: "2026-07-17", color: "#B08D57", icon: "castle",
+    coords: [49.3755, 10.1866],
     title: "Uttendorf → Rothenburg (via Chiemsee)", base: "Rothenburg / Dinkelsbühl",
     drive: "ca 55–65 mil inkl. stopp", vibe: "Lång dag med starkt stopp",
     note: "Ersätter Wolfgangsee-natten. Ta båten ut till Herreninsel och Schloss Herrenchiemsee (Ludvig II:s praktslott). Lång dag totalt (~6–7h) – dela i etapper.",
@@ -238,6 +246,7 @@ export const DAYS = [
   },
   {
     n: 9, date: "Lör 18 juli", iso: "2026-07-18", color: "#C05A4A", icon: "ship",
+    coords: [53.5511, 9.9937],
     title: "Rothenburg → Hamburg", base: "Hamburg (HafenCity)",
     drive: "ca 60–65 mil", vibe: "Längsta inlandsdagen",
     note: "Storstadsavslutning med fin symmetri mot Lübeck. Längsta inlandsdagen (~6h) – ~1h längre än till Lüneburg, men söndagen blir kortare i gengäld.",
@@ -266,6 +275,7 @@ export const DAYS = [
   },
   {
     n: 10, date: "Sön 19 juli", iso: "2026-07-19", color: "#556B7D", icon: "home",
+    coords: [58.4109, 15.6216],
     title: "Hamburg → Linköping", base: "Hemma i Linköping",
     drive: "ca 70–80 mil + färja", vibe: "Transport hem",
     map: gmap(["Hamburg, Germany", "Puttgarden, Germany", "Rødby Færgehavn, Denmark", "Öresundsbron", "IONITY Jönköping, Sweden", "Linköping, Sweden"]),
