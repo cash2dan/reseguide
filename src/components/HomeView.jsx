@@ -116,7 +116,7 @@ export default function HomeView({ onOpenDay, todayIdx, daysToDeparture, checkli
                   </div>
 
                   {/* card */}
-                  <div className="flex-1 mb-2.5 rounded-2xl px-4 py-3" style={{ background: "#fff", border: `1px solid ${MIST}`, borderLeft: `3px solid ${d.color}` }}>
+                  <div className="flex-1 min-w-0 mb-2.5 rounded-2xl px-4 py-3" style={{ background: "#fff", border: `1px solid ${MIST}`, borderLeft: `3px solid ${d.color}` }}>
                     <div className="flex items-center gap-2 min-w-0">
                       <span className="text-[10px] uppercase tracking-wider font-bold shrink-0" style={{ color: d.color }}>{d.date}</span>
                       {isToday && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: d.color }}>IDAG</span>}

@@ -17,8 +17,8 @@ function iconFor(code) {
   return Cloud;
 }
 
-function weatherUrl(coords) {
-  return `https://www.yr.no/en/forecast/daily-table/${coords[0]},${coords[1]}`;
+function weatherUrl(coords, iso) {
+  return `https://www.yr.no/en/forecast/daily-table/${coords[0]},${coords[1]}#${iso}`;
 }
 
 // variant: "banner" (white on colored bg) or "plain" (colored on light bg)
@@ -57,7 +57,7 @@ export default function Weather({ coords, iso, variant = "banner", color, linked
 
   if (linked) {
     return (
-      <a href={weatherUrl(coords)} target="_blank" rel="noopener noreferrer" className={className} style={style} title="Öppna detaljerad väderprognos">
+      <a href={weatherUrl(coords, iso)} target="_blank" rel="noopener noreferrer" className={className} style={style} title="Öppna detaljerad väderprognos">
         {content}
       </a>
     );
