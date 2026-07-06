@@ -39,8 +39,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full flex justify-center" style={{ background: PAPER, color: INK, fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif" }}>
-      <div className="w-full max-w-md pb-10">
+    <div className="min-h-screen w-full overflow-x-hidden flex justify-center" style={{ background: PAPER, color: INK, fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif" }}>
+      <div className="w-full max-w-md min-w-0 overflow-x-hidden pb-10">
 
         {/* sticky header */}
         <div className="sticky top-0 z-20 px-4 pt-4 pb-3" style={{ background: BRAND, paddingTop: "max(1rem, env(safe-area-inset-top))" }}>
@@ -65,7 +65,7 @@ export default function App() {
                 <Share2 size={16} color="#fff" />
               </button>
             )}
-            <span className="flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full" style={{ background: rgba("#FFFFFF", 0.14), color: "#FFF" }}>
+            <span className="hidden min-[360px]:flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full shrink-0" style={{ background: rgba("#FFFFFF", 0.14), color: "#FFF" }}>
               <WifiOff size={12} /> Offline
             </span>
           </div>

@@ -17,8 +17,12 @@ function iconFor(code) {
   return Cloud;
 }
 
+function weatherUrl(coords, iso) {
+  return `https://www.google.com/search?q=${encodeURIComponent(`väder ${coords[0]},${coords[1]} ${iso}`)}`;
+}
+
 // variant: "banner" (white on colored bg) or "plain" (colored on light bg)
-export default function Weather({ coords, iso, variant = "banner", color }) {
+export default function Weather({ coords, iso, variant = "banner", color, linked = false }) {
   const { loading, data } = useWeather(coords, iso);
   if (loading || !data) return null;
   const Icon = iconFor(data.code);
@@ -35,12 +39,33 @@ export default function Weather({ coords, iso, variant = "banner", color }) {
     );
   }
 
-  return (
-    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full shrink-0" style={{ background: rgba("#FFFFFF", 0.18) }}>
-      <Icon size={14} color="#fff" />
-      <span className="text-[12px] font-bold text-white">
-        {data.tmax}°<span style={{ opacity: 0.75 }}>/{data.tmin}°</span>
+  const content = (
+    <>
+      <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: rgba("#FFFFFF", 0.18) }}>
+        <Icon size={20} color="#fff" />
       </span>
+      <span className="text-left leading-none">
+        <span className="block text-[9px] uppercase tracking-wider font-bold text-white" style={{ opacity: 0.78 }}>Väder</span>
+        <span className="block text-[15px] font-extrabold text-white mt-0.5">
+          {data.tmax}°<span style={{ opacity: 0.75 }}>/{data.tmin}°</span>
+        </span>
+      </span>
+    </>
+  );
+  const className = "inline-flex items-center gap-2 px-2.5 py-1.5 rounded-2xl shrink-0 active:scale-95 transition-transform";
+  const style = { background: rgba("#000000", 0.18), boxShadow: `0 4px 12px ${rgba("#000000", 0.12)}` };
+
+  if (linked) {
+    return (
+      <a href={weatherUrl(coords, iso)} target="_blank" rel="noopener noreferrer" className={className} style={style} title="Öppna detaljerad väderprognos">
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <span className={className} style={style}>
+      {content}
     </span>
   );
 }

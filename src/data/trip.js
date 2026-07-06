@@ -12,6 +12,13 @@ export const TRIP = {
   departISO: "2026-07-10",
 };
 
+export const STAGES = [
+  { label: "Nerresa", range: [1, 1], summary: "Linköping till Lübeck", color: "#3E6D8E" },
+  { label: "Moseldalen", range: [2, 4], summary: "Tre nätter i Bernkastel-Kues", color: "#7A4E7E" },
+  { label: "Alperna", range: [5, 7], summary: "Tre nätter i Uttendorf", color: "#2E5339" },
+  { label: "Hemvägen", range: [8, 10], summary: "Chiemsee, Rothenburg, Hamburg och hem", color: "#B08D57" },
+];
+
 export const DAYS = [
   {
     n: 1, date: "Fre 10 juli", iso: "2026-07-10", color: "#3E6D8E", icon: "anchor",

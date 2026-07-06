@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronRight, Navigation2, CalendarClock, Route as RouteIcon } from "lucide-react";
-import { TRIP, DAYS } from "../data/trip";
+import { TRIP, DAYS, STAGES } from "../data/trip";
 import { BRAND, GOLD, INK, MIST, MUTE, rgba } from "../lib/palette";
 import Weather from "./Weather";
 
@@ -17,6 +17,12 @@ export default function HomeView({ onOpenDay, todayIdx, daysToDeparture, checkli
   const totalPlan = DAYS.reduce((s, d) => s + d.plan.length, 0);
   const donePlan = DAYS.reduce((s, d) => s + checklist.countFor(`d${d.n}.plan.`), 0);
   const pct = totalPlan ? Math.round((donePlan / totalPlan) * 100) : 0;
+  const stages = STAGES.map((stage) => ({
+    ...stage,
+    days: DAYS.map((day, index) => ({ day, index })).filter(
+      ({ day }) => day.n >= stage.range[0] && day.n <= stage.range[1]
+    ),
+  }));
 
   return (
     <div className="animate-day">
@@ -33,7 +39,7 @@ export default function HomeView({ onOpenDay, todayIdx, daysToDeparture, checkli
               Linköping → Mosel → Alperna → Hamburg → hem
             </div>
 
-            <div className="flex gap-2 mt-4">
+            <div className="grid grid-cols-4 gap-2 mt-4">
               <Stat big="9" small="nätter" />
               <Stat big="4" small="länder" />
               <Stat big="~430" small="mil" />
@@ -77,44 +83,59 @@ export default function HomeView({ onOpenDay, todayIdx, daysToDeparture, checkli
       <div className="px-4 pt-5 pb-2">
         <span className="text-[11px] uppercase tracking-wider font-bold" style={{ color: MUTE }}>Hela resan</span>
       </div>
-      <div className="px-4 pb-4">
-        {DAYS.map((d, i) => {
-          const isToday = i === todayIdx;
-          const done = d.plan.length > 0 && checklist.countFor(`d${d.n}.plan.`) === d.plan.length;
-          return (
-            <button
-              key={d.n}
-              onClick={() => onOpenDay(i)}
-              className="w-full flex items-stretch gap-3 text-left active:scale-[0.99] transition-transform"
-            >
-              {/* spine + node */}
-              <div className="flex flex-col items-center" style={{ width: 34 }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-extrabold text-[13px]"
-                  style={{ background: d.color, color: "#fff", boxShadow: isToday ? `0 0 0 3px ${rgba(d.color, 0.3)}` : "none" }}>
-                  {d.n}
-                </div>
-                {i < DAYS.length - 1 && <div className="w-0.5 flex-1 my-1" style={{ background: rgba(d.color, 0.3) }} />}
+      <div className="px-4 pb-4 space-y-3">
+        {stages.map((stage) => (
+          <section key={stage.label} className="rounded-3xl p-3" style={{ background: rgba(stage.color, 0.08), border: `1px solid ${rgba(stage.color, 0.22)}` }}>
+            <div className="flex items-center gap-2 px-1 pb-2">
+              <span className="h-2.5 w-2.5 rounded-full" style={{ background: stage.color }} />
+              <div className="flex-1 min-w-0">
+                <div className="text-[11px] uppercase tracking-wider font-extrabold" style={{ color: stage.color }}>{stage.label}</div>
+                <div className="text-[11px] truncate" style={{ color: MUTE }}>{stage.summary}</div>
               </div>
+              <span className="text-[10px] font-bold px-2 py-1 rounded-full" style={{ background: "#fff", color: stage.color }}>
+                Dag {stage.range[0]}{stage.range[0] !== stage.range[1] ? `–${stage.range[1]}` : ""}
+              </span>
+            </div>
 
-              {/* card */}
-              <div className="flex-1 mb-2.5 rounded-2xl px-4 py-3" style={{ background: "#fff", border: `1px solid ${MIST}`, borderLeft: `3px solid ${d.color}` }}>
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] uppercase tracking-wider font-bold" style={{ color: d.color }}>{d.date}</span>
-                  {isToday && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: d.color }}>IDAG</span>}
-                  {done && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: rgba(d.color, 0.12), color: d.color }}>KLAR</span>}
-                  <span className="ml-auto"><Weather coords={d.coords} iso={d.iso} variant="plain" color={MUTE} /></span>
-                </div>
-                <div className="flex items-center gap-2 mt-1">
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-bold leading-tight truncate" style={{ color: INK }}>{d.title}</div>
-                    <div className="text-[11px] truncate" style={{ color: MUTE }}>{d.base}</div>
+            {stage.days.map(({ day: d, index: i }) => {
+              const isToday = i === todayIdx;
+              const done = d.plan.length > 0 && checklist.countFor(`d${d.n}.plan.`) === d.plan.length;
+              return (
+                <button
+                  key={d.n}
+                  onClick={() => onOpenDay(i)}
+                  className="w-full flex items-stretch gap-3 text-left active:scale-[0.99] transition-transform"
+                >
+                  {/* spine + node */}
+                  <div className="flex flex-col items-center" style={{ width: 34 }}>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-extrabold text-[13px]"
+                      style={{ background: d.color, color: "#fff", boxShadow: isToday ? `0 0 0 3px ${rgba(d.color, 0.3)}` : "none" }}>
+                      {d.n}
+                    </div>
+                    {i < stage.days[stage.days.length - 1].index && <div className="w-0.5 flex-1 my-1" style={{ background: rgba(stage.color, 0.3) }} />}
                   </div>
-                  <ChevronRight size={18} style={{ color: MUTE }} className="shrink-0" />
-                </div>
-              </div>
-            </button>
-          );
-        })}
+
+                  {/* card */}
+                  <div className="flex-1 mb-2.5 rounded-2xl px-4 py-3" style={{ background: "#fff", border: `1px solid ${MIST}`, borderLeft: `3px solid ${d.color}` }}>
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="text-[10px] uppercase tracking-wider font-bold shrink-0" style={{ color: d.color }}>{d.date}</span>
+                      {isToday && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: d.color }}>IDAG</span>}
+                      {done && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: rgba(d.color, 0.12), color: d.color }}>KLAR</span>}
+                      <span className="ml-auto shrink-0"><Weather coords={d.coords} iso={d.iso} variant="plain" color={MUTE} /></span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[14px] font-bold leading-tight truncate" style={{ color: INK }}>{d.title}</div>
+                        <div className="text-[11px] truncate" style={{ color: MUTE }}>{d.base}</div>
+                      </div>
+                      <ChevronRight size={18} style={{ color: MUTE }} className="shrink-0" />
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </section>
+        ))}
       </div>
     </div>
   );

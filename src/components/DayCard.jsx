@@ -48,7 +48,7 @@ export default function DayCard({ day, checklist }) {
               <div className="text-[11px] uppercase tracking-[0.18em] font-semibold" style={{ color: rgba("#FFFFFF", 0.82) }}>Dag {day.n} · {day.date}</div>
               <div className="text-white font-bold text-[17px] leading-tight mt-0.5">{day.title}</div>
             </div>
-            <Weather coords={day.coords} iso={day.iso} variant="banner" />
+            <Weather coords={day.coords} iso={day.iso} variant="banner" linked />
           </div>
           <div className="grid grid-cols-3 bg-white">
             {[["Körning", day.drive], ["Bas", day.base], ["Karaktär", day.vibe]].map(([l, v], i) => (
