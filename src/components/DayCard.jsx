@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  Anchor, Grape, Bike, Mountain, MountainSnow, Flower2, Castle, Ship, Home,
-  Zap, Clock, MapPin, ExternalLink, Check,
+  Anchor, Grape, Bike, Mountain, MountainSnow, Flower2, Castle, Ship, Home, Wine,
+  Zap, Clock, MapPin, ExternalLink, Check, BedDouble, Utensils, Lightbulb,
 } from "lucide-react";
 import { BRAND, INK, MIST, MUTE, rgba } from "../lib/palette";
 import Collapsible from "./Collapsible";
@@ -9,7 +9,7 @@ import MapButton from "./MapButton";
 
 const ICONS = {
   anchor: Anchor, grape: Grape, bike: Bike, mountain: Mountain,
-  "mountain-snow": MountainSnow, flower: Flower2, castle: Castle, ship: Ship, home: Home,
+  "mountain-snow": MountainSnow, flower: Flower2, castle: Castle, ship: Ship, home: Home, wine: Wine,
 };
 
 function CheckRow({ id, isChecked, toggle, color, children }) {
@@ -58,6 +58,29 @@ export default function DayCard({ day, checklist }) {
           </div>
         </div>
       </div>
+
+      {/* accommodation */}
+      {day.stay && (
+        <div className="px-4 pt-4">
+          <div className="rounded-2xl px-4 py-3 flex items-center gap-3" style={{ border: `1px solid ${MIST}`, background: "#fff" }}>
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: rgba(day.color, 0.12) }}>
+              <BedDouble size={18} style={{ color: day.color }} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-[9px] uppercase tracking-wider font-bold" style={{ color: day.color }}>Boende</div>
+              <div className="text-[13px] font-semibold leading-tight" style={{ color: INK }}>{day.stay.name}</div>
+              <div className="flex items-center gap-1 text-[11px] mt-0.5" style={{ color: MUTE }}>
+                <Utensils size={11} /> {day.stay.meal}
+              </div>
+            </div>
+            <a href={day.stay.map} target="_blank" rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-1 text-[11px] font-semibold px-3 py-2 rounded-full active:scale-95 transition-transform"
+              style={{ background: rgba(day.color, 0.1), color: day.color }}>
+              <MapPin size={12} /> Karta
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* map button */}
       <div className="px-4 pt-4">
@@ -112,6 +135,31 @@ export default function DayCard({ day, checklist }) {
             ))}
           </ul>
         </Collapsible>
+
+        {day.tips && (
+          <Collapsible label="Tips & alternativ" icon={Lightbulb} color={day.color}>
+            <div className="text-[11px] mb-2" style={{ color: MUTE }}>Välj efter väder och lust</div>
+            <div className="space-y-3">
+              {day.tips.map((t, i) => (
+                <div key={i} style={{ paddingBottom: i < day.tips.length - 1 ? 10 : 0, borderBottom: i < day.tips.length - 1 ? `1px solid ${MIST}` : "none" }}>
+                  <div className="text-[13px] font-semibold" style={{ color: INK }}>{t.name}</div>
+                  <div className="text-[12px] mt-0.5 leading-relaxed" style={{ color: MUTE }}>{t.desc}</div>
+                  {t.links && t.links.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-1.5">
+                      {t.links.map(([tx, u]) => (
+                        <a key={u} href={u} target="_blank" rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full active:scale-95 transition-transform"
+                          style={{ background: rgba(day.color, 0.08), color: day.color }}>
+                          <ExternalLink size={11} /> {tx}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Collapsible>
+        )}
 
         <Collapsible
           label="Dagsprogram"

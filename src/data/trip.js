@@ -3,6 +3,8 @@
 
 const gmap = (pts) =>
   "https://www.google.com/maps/dir/" + pts.map(encodeURIComponent).join("/");
+const gsearch = (q) =>
+  "https://www.google.com/maps/search/" + encodeURIComponent(q);
 
 export const TRIP = {
   title: "Bilsemester i Europa",
@@ -15,6 +17,7 @@ export const DAYS = [
     n: 1, date: "Fre 10 juli", iso: "2026-07-10", color: "#3E6D8E", icon: "anchor",
     title: "Linköping → Lübeck", base: "Lübeck (Altstadt)",
     drive: "ca 68–73 mil + färja", vibe: "Lång men lugn resdag",
+    stay: { name: "Premier Inn Lübeck City Centre", meal: "Frukost ingår", map: gsearch("Premier Inn Lübeck City Centre") },
     map: gmap(["Linköping, Sweden", "IONITY Värnamo, Sweden", "Öresundsbron", "Rødby Færgehavn, Denmark", "Lübeck Altstadt, Germany"]),
     mapLabel: "Linköping → Värnamo → bron → Rødby → Lübeck",
     legs: [
@@ -27,7 +30,7 @@ export const DAYS = [
     see: [
       "UNESCO-hansastad med Holstentor, Marienkirche och gott om restauranger.",
       "Kvällspromenad genom Altstadt – det mesta inom gångavstånd.",
-      "Boka hotell i/nära Altstadt med laddning så slipper ni köra mer.",
+      "Premier Inn ligger centralt – frukost ingår, bra start på resan.",
     ],
     plan: [
       ["08:00", "Avfärd Linköping"],
@@ -41,7 +44,7 @@ export const DAYS = [
   },
   {
     n: 2, date: "Lör 11 juli", iso: "2026-07-11", color: "#7A4E7E", icon: "grape",
-    title: "Lübeck → Bernkastel-Kues", base: "Bernkastel-Kues (1/2)",
+    title: "Lübeck → Bernkastel-Kues", base: "Bernkastel-Kues (1/3)",
     drive: "ca 62–67 mil inkl. avstickare", vibe: "Resdag med sceniskt slut",
     note: "Naturskön Mosel-infart: vik av vid Koblenz och följ B49/B416/B53 längs floden via Cochem – ~30 min längre men vingårdar och flodkröker hela vägen.",
     map: gmap(["Lübeck, Germany", "IONITY Allertal, Germany", "IONITY Köln-Nord, Germany", "Burg Eltz Parkplatz Antoniuskapelle, Wierschem", "Cochem, Germany", "Bernkastel-Kues, Germany"]),
@@ -55,7 +58,7 @@ export const DAYS = [
     see: [
       "Burg Eltz syns fint från utsiktsstigen vid Wierschem – ~20 min promenad, ingen entré.",
       "Natursköna Mosel-vägen går via Cochem (fin fikaby med borg).",
-      "Bernkastel-Kues: korsvirkeshus på torget, bra bas för cykling.",
+      "Bernkastel-Kues: korsvirkeshus på torget, bra bas för tre nätter.",
       "Boka boende med parkering/laddning centralt.",
     ],
     plan: [
@@ -70,7 +73,7 @@ export const DAYS = [
   },
   {
     n: 3, date: "Sön 12 juli", iso: "2026-07-12", color: "#9C6B3F", icon: "bike",
-    title: "Moseldalen – cykeldag", base: "Bernkastel-Kues (2/2)",
+    title: "Moseldalen – cykeldag", base: "Bernkastel-Kues (2/3)",
     drive: "lokal cykeltur, ingen bil", vibe: "Full aktivitetsdag, lugnt tempo",
     map: gmap(["Bernkastel-Kues, Germany", "Zeltingen-Rachtig, Germany", "Ürzig, Germany", "Traben-Trarbach, Germany", "Bernkastel-Kues, Germany"]),
     mapLabel: "Cykelslinga: Zeltingen → Ürzig → Traben-Trarbach → åter",
@@ -90,9 +93,39 @@ export const DAYS = [
     links: [["Moselradweg", "https://www.moselradweg.de/"]],
   },
   {
-    n: 4, date: "Mån 13 juli", iso: "2026-07-13", color: "#2E5339", icon: "mountain",
-    title: "Moseldalen → Uttendorf", base: "Uttendorf · Stubacher Hof (1/4)",
+    n: 4, date: "Mån 13 juli", iso: "2026-07-13", color: "#6E7F5B", icon: "wine",
+    title: "Moseldalen – lugn dag (välj efter väder)", base: "Bernkastel-Kues (3/3)",
+    drive: "valfritt – från 0 till ~5 mil", vibe: "Ladda batterierna inför alp-körningen",
+    note: "Basplanen är en lugn dag i Bernkastel före den långa körningen till Österrike. Men beroende på väder och lust finns flera utflykter inom räckhåll – se Tips & alternativ nedan.",
+    map: gsearch("Burg Landshut Bernkastel-Kues"),
+    mapLabel: "Promenad upp till Burg Landshut för utsikten",
+    see: [
+      "Burg Landshut: kort men brant promenad upp till ruinen för den klassiska vyn över flodslingan och gamla stan.",
+      "Mosel-Vinothek i Kues: prova 100+ Mosel-viner under ett tak, bra vid regn.",
+      "Ett lugnt tempo idag gör morgondagens 6–7 timmars körning till Uttendorf lättare.",
+    ],
+    tips: [
+      { name: "Trier – romersk heldag (~45 min)", desc: "Tysklands äldsta stad, UNESCO. Porta Nigra, amfiteater, kejsartermer, domkyrka. Störst kontrast och funkar även i regn.", links: [["Trier turism", "https://www.trier-info.de/"]] },
+      { name: "Burg Eltz – gå in (~35 min)", desc: "Dag 2 såg ni den utifrån. Nu en riktig guidad visning inuti den möblerade 800-åriga borgen med skattkammaren.", links: [["Burg Eltz", "https://burg-eltz.de/"]] },
+      { name: "Cochem & Reichsburg (~40 min)", desc: "Gå in i borgen, sessellift upp till Pinnerkreuz för panoramavy, strosa i stan. Lättsam blandning av borg och stadsliv.", links: [["Reichsburg Cochem", "https://www.reichsburg-cochem.de/"], ["Cochem", "https://www.cochem.de/"]] },
+      { name: "Bremm / Calmont (~40 min)", desc: "Europas brantaste vingård och den mest dramatiska flodslingan. Utsiktspunkt för foto, eller Calmont-klättersteg för den äventyrlige.", links: [] },
+      { name: "Flodkryssning på Mosel", desc: "Se vingårdssluttningarna från vattnet. Avgår från Bernkastel-Kues brygga – skönt sätt att vila både ben och bil.", links: [] },
+    ],
+    plan: [
+      ["09:30", "Sen frukost"],
+      ["10:30–12:00", "Promenad upp till Burg Landshut för utsikten"],
+      ["12:30–13:30", "Lunch i gamla stan"],
+      ["14:00–16:00", "Mosel-Vinothek i Kues, eller vald utflykt (se tips)"],
+      ["17:00", "Packa inför morgondagens långkörning"],
+      ["19:00", "Middag vid Mosel"],
+    ],
+    links: [["Bernkastel-Kues turism", "https://www.bernkastel.de/"], ["Mosel turism", "https://www.visitmosel.de/"]],
+  },
+  {
+    n: 5, date: "Tis 14 juli", iso: "2026-07-14", color: "#2E5339", icon: "mountain",
+    title: "Moseldalen → Uttendorf", base: "Uttendorf · Stubacher Hof (1/3)",
     drive: "ca 65–75 mil", vibe: "Ren transportdag",
+    stay: { name: "Stubacher Hof, Uttendorf", meal: "Halvpension (frukost + 3-rätters middag)", map: gsearch("Stubacher Hof Uttendorf") },
     map: gmap(["Bernkastel-Kues, Germany", "IONITY Mannheim, Germany", "IONITY Aichen, Germany", "Kufstein, Austria", "Uttendorf, Salzburg, Austria"]),
     mapLabel: "Bernkastel → Mannheim → Ulm → Kufstein → Uttendorf",
     legs: [
@@ -104,7 +137,7 @@ export const DAYS = [
     see: [
       "Ren transportdag – planera inte in sevärdheter.",
       "Uttendorf ligger vid Stubachtal/Weißsee, samma avstånd till Kaprun som Mittersill.",
-      "Stubacher Hof ligger nära väg/järnväg – be om rum mot trädgården.",
+      "Stubacher Hof ligger nära väg/järnväg – be om rum mot trädgården. Halvpension bokad.",
       "Sikta på att anlända med minst 20% batteri.",
     ],
     plan: [
@@ -113,20 +146,27 @@ export const DAYS = [
       ["12:30–13:30", "Lunch + laddning kring Ulm"],
       ["15:30–16:00", "Toppning vid gränsen"],
       ["17:30–18:30", "Ankomst Uttendorf, incheckning"],
-      ["19:30", "Middag (halvpension eller i byn)"],
+      ["19:30", "Middag på hotellet (halvpension)"],
     ],
     links: [["Stubacher Hof", "https://www.hotel-restaurant-uttendorf.com/de/"], ["ABRP", "https://abetterrouteplanner.com/"]],
   },
   {
-    n: 5, date: "Tis 14 juli", iso: "2026-07-14", color: "#3B7A6E", icon: "mountain-snow",
-    title: "Kaprun & Kitzsteinhorn", base: "Uttendorf (2/4)",
+    n: 6, date: "Ons 15 juli", iso: "2026-07-15", color: "#3B7A6E", icon: "mountain-snow",
+    title: "Kaprun & Kitzsteinhorn", base: "Uttendorf · Stubacher Hof (2/3)",
     drive: "ca 3–5 mil enkel väg", vibe: "Lokal dagsutflykt",
+    stay: { name: "Stubacher Hof, Uttendorf", meal: "Halvpension (frukost + 3-rätters middag)", map: gsearch("Stubacher Hof Uttendorf") },
     map: gmap(["Uttendorf, Salzburg, Austria", "Kitzsteinhorn Talstation, Kaprun, Austria"]),
     mapLabel: "Uttendorf → Kaprun / Kitzsteinhorn",
     see: [
       "Kitzsteinhorn vid klart väder – glaciär, Gipfelwelt 3000, Top of Salzburg.",
       "Sigmund-Thun-Klamm om molnen ligger lågt – kort men häftigt.",
       "Kaprun-reservoarerna/Mooserboden för stor alp-känsla utan lång vandring.",
+    ],
+    tips: [
+      { name: "Sigmund-Thun-Klamm", desc: "Dramatisk klyfta med träspänger. Kort och funkar även om vädret är grått – bra plan B för Kitzsteinhorn.", links: [["Kaprun", "https://www.kaprun.gv.at/"]] },
+      { name: "Kaprun Hochgebirgsstauseen", desc: "Buss + lift upp till Mooserboden-reservoaren för stor alp-känsla utan lång vandring.", links: [["Verbund besökscenter", "https://www.verbund.com/de-at/ueber-verbund/unsere-kraftwerke/besucherzentren/kaprun"]] },
+      { name: "Krimmler Wasserfälle (~40 min)", desc: "Österrikes högsta vattenfall. Bra naturupplevelse om det är bättre väder västerut.", links: [] },
+      { name: "Schmittenhöhe / Zell am See", desc: "Lättare alpvyer med lift och sjön i samma dag om ni vill ta det lugnare.", links: [] },
     ],
     plan: [
       ["08:15", "Avfärd Uttendorf"],
@@ -138,15 +178,21 @@ export const DAYS = [
     links: [["Kitzsteinhorn", "https://www.kitzsteinhorn.at/"], ["Sigmund-Thun-Klamm", "https://www.kaprun.gv.at/"]],
   },
   {
-    n: 6, date: "Ons 15 juli", iso: "2026-07-15", color: "#5B8C5A", icon: "flower",
-    title: "Sound of Music-alpdag", base: "Uttendorf (3/4)",
-    drive: "ca 2–3 mil lokalt", vibe: "Scenic, lugn alpdag",
+    n: 7, date: "Tors 16 juli", iso: "2026-07-16", color: "#5B8C5A", icon: "flower",
+    title: "Sound of Music-alpdag", base: "Uttendorf · Stubacher Hof (3/3)",
+    drive: "ca 2–3 mil lokalt (mer vid Grossglockner-tips)", vibe: "Scenic, lugn alpdag",
+    stay: { name: "Stubacher Hof, Uttendorf", meal: "Halvpension (frukost + 3-rätters middag)", map: gsearch("Stubacher Hof Uttendorf") },
     map: gmap(["Uttendorf, Salzburg, Austria", "Panoramabahn Kitzbüheler Alpen Hollersbach, Austria"]),
     mapLabel: "Uttendorf → Panoramabahn Hollersbach",
     see: [
       "Er romantiska alpdag: gröna ängar, utsikt, kor, lift upp – ingen teknisk vandring.",
       "Välj markerade lätta/medelsvåra leder efter väder och energi.",
       "Schloss Mittersill som kvällsaktivitet eller middag.",
+    ],
+    tips: [
+      { name: "★ Grossglockner Hochalpenstraße (hel dag)", desc: "Om vädret är perfekt och ni hellre vill byta ut den lugna alpdagen mot något storslaget: en av Alpernas mest spektakulära bilvägar, ~45 min bort. Mautbelagd, klassisk glaciärvy vid Kaiser-Franz-Josefs-Höhe. Kräver klart väder och nästan hela dagen.", links: [["Grossglockner", "https://www.grossglockner.at/"]] },
+      { name: "Weißsee Gletscherwelt (Stubachtal)", desc: "Ligger vid själva hotellet – linbana upp i en glaciärvärld. Kort och nära, bra om ni vill ha alp utan lång körning.", links: [] },
+      { name: "Nationalparkzentrum Hohe Tauern", desc: "Interaktivt naturcenter i Mittersill – bästa regnalternativet, ~15 min bort.", links: [["Hohe Tauern", "https://www.hohetauern.at/"]] },
     ],
     plan: [
       ["09:30", "Avfärd, parkera vid Panoramabahn"],
@@ -157,35 +203,6 @@ export const DAYS = [
       ["18:00–19:00", "Schloss Mittersill – drink/utsikt"],
     ],
     links: [["Panoramabahn Hollersbach", "https://www.panoramabahn.at/"], ["Schloss Mittersill", "https://www.schlossmittersill.com/"]],
-  },
-  {
-    n: 7, date: "Tors 16 juli", iso: "2026-07-16", color: "#8A5A3C", icon: "mountain",
-    title: "Grossglockner Hochalpenstraße", base: "Uttendorf (4/4)",
-    drive: "ca 12–15 mil t.o.r.", vibe: "Hel alpdag, kräver klart väder",
-    note: "Dagens höjdpunkt – blev möjlig tack vare den fjärde alpnatten. Reservplan vid dåligt väder: Weißsee Gletscherwelt eller Nationalparkzentrum Hohe Tauern, direkt från Uttendorf.",
-    map: gmap(["Uttendorf, Salzburg, Austria", "Großglockner Hochalpenstraße Mautstelle Ferleiten", "Edelweißspitze, Austria", "Kaiser-Franz-Josefs-Höhe, Austria", "Uttendorf, Salzburg, Austria"]),
-    mapLabel: "Uttendorf → Grossglockner → Franz-Josefs-Höhe → åter",
-    legs: [
-      { a: "Uttendorf", b: "Mautstation", road: "B168 → B311 → infart", dt: "~4 mil · 45 min", chg: "Ladda kvällen innan" },
-      { a: "Mautstation", b: "Edelweißspitze", road: "Hochalpenstraße + avstickare", dt: "~2 mil · 40 min", chg: "—" },
-      { a: "Edelweißspitze", b: "Franz-Josefs-Höhe", road: "Hochalpenstraße söderut", dt: "~2,5 mil · 50 min", chg: "—" },
-      { a: "Franz-Josefs-Höhe", b: "Uttendorf", road: "Samma väg tillbaka", dt: "~8,5 mil · 1h45", chg: "Ladda vid behov" },
-    ],
-    see: [
-      "Kaiser-Franz-Josefs-Höhe: klassisk vy över Pasterze-glaciären och Grossglockner.",
-      "Mautbelagd väg (avgift per bil), normalt öppen maj–okt – kolla driftstatus.",
-      "Räkna med hela dagen, slingrig väg med gott om utsiktsplatser.",
-      "Ta med fleece/jacka – svalt på höjderna även i juli.",
-    ],
-    plan: [
-      ["08:30", "Avfärd mot Bruck/Fusch"],
-      ["09:15", "Infart, betala maut"],
-      ["09:30–10:15", "Edelweißspitze"],
-      ["11:00–13:00", "Kaiser-Franz-Josefs-Höhe, glaciärvy"],
-      ["14:15–16:00", "Utsiktsstopp på vägen tillbaka"],
-      ["19:30", "Sista middagen i Uttendorf"],
-    ],
-    links: [["Grossglockner Hochalpenstraße", "https://www.grossglockner.at/"], ["Nationalpark Hohe Tauern", "https://www.hohetauern.at/"]],
   },
   {
     n: 8, date: "Fre 17 juli", iso: "2026-07-17", color: "#B08D57", icon: "castle",
