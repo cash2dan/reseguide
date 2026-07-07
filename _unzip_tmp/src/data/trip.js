@@ -12,13 +12,6 @@ export const TRIP = {
   departISO: "2026-07-10",
 };
 
-export const STAGES = [
-  { label: "Nerresa", range: [1, 1], summary: "Linköping till Lübeck", color: "#3E6D8E" },
-  { label: "Moseldalen", range: [2, 4], summary: "Tre nätter i Bernkastel-Kues", color: "#7A4E7E" },
-  { label: "Alperna", range: [5, 7], summary: "Tre nätter i Uttendorf", color: "#2E5339" },
-  { label: "Hemvägen", range: [8, 10], summary: "Chiemsee, Rothenburg, Hamburg och hem", color: "#B08D57" },
-];
-
 export const DAYS = [
   {
     n: 1, date: "Fre 10 juli", iso: "2026-07-10", color: "#3E6D8E", icon: "anchor",
@@ -26,7 +19,7 @@ export const DAYS = [
     title: "Linköping → Lübeck", base: "Lübeck (Altstadt)",
     drive: "ca 68–73 mil + färja", vibe: "Lång men lugn resdag",
     stay: { name: "Premier Inn Lübeck City Centre", meal: "Frukost ingår", map: gsearch("Premier Inn Lübeck City Centre") },
-    map: gmap(["Linköping, Sweden", "Öresundsbron", "Rødby Færgehavn, Denmark", "Lübeck Altstadt, Germany"]),
+    map: gmap(["Linköping, Sweden", "IONITY Värnamo, Sweden", "Öresundsbron", "Rødby Færgehavn, Denmark", "Lübeck Altstadt, Germany"]),
     mapLabel: "Linköping → Värnamo → bron → Rødby → Lübeck",
     legs: [
       { a: "Linköping", b: "Värnamo-trakten", road: "E4 söderut", dt: "~24 mil · 2h30", chg: "IONITY Värnamo → 80%" },
@@ -57,7 +50,7 @@ export const DAYS = [
     drive: "ca 62–67 mil inkl. avstickare", vibe: "Resdag med sceniskt slut",
     note: "Naturskön Mosel-infart: vik av vid Koblenz och följ B49/B416/B53 längs floden via Cochem – ~30 min längre men vingårdar och flodkröker hela vägen.",
     stay: { name: "Roussel Hotel Restaurant, Bernkastel-Kues", meal: "Frukost ingår", map: gsearch("Roussel Hotel Restaurant Bernkastel-Kues") },
-    map: gmap(["Lübeck, Germany", "Burg Eltz Parkplatz Antoniuskapelle, Wierschem", "Cochem, Germany", "Bernkastel-Kues, Germany"]),
+    map: gmap(["Lübeck, Germany", "IONITY Allertal, Germany", "IONITY Köln-Nord, Germany", "Burg Eltz Parkplatz Antoniuskapelle, Wierschem", "Cochem, Germany", "Bernkastel-Kues, Germany"]),
     mapLabel: "Lübeck → Burg Eltz → naturskön Mosel → Bernkastel",
     legs: [
       { a: "Lübeck", b: "Allertal (A7)", road: "A1 → A7 förbi Hamburg/Bremen", dt: "~23 mil · 2h30", chg: "IONITY Allertal → 80%" },
@@ -150,7 +143,7 @@ export const DAYS = [
     title: "Moseldalen → Uttendorf", base: "Uttendorf · Stubacher Hof (1/3)",
     drive: "ca 65–75 mil", vibe: "Ren transportdag",
     stay: { name: "Stubacher Hof, Uttendorf", meal: "Halvpension (frukost + 3-rätters middag)", map: gsearch("Stubacher Hof Uttendorf") },
-    map: gmap(["Bernkastel-Kues, Germany", "Kufstein, Austria", "Uttendorf, Salzburg, Austria"]),
+    map: gmap(["Bernkastel-Kues, Germany", "IONITY Mannheim, Germany", "IONITY Aichen, Germany", "Kufstein, Austria", "Uttendorf, Salzburg, Austria"]),
     mapLabel: "Bernkastel → Mannheim → Ulm → Kufstein → Uttendorf",
     legs: [
       { a: "Bernkastel", b: "Mannheim-trakten", road: "B50 → A61/A6", dt: "~20 mil · 2h10", chg: "IONITY Mannheim → 80%" },
@@ -236,7 +229,7 @@ export const DAYS = [
     title: "Uttendorf → Rothenburg (via Chiemsee)", base: "Rothenburg / Dinkelsbühl",
     drive: "ca 55–65 mil inkl. stopp", vibe: "Lång dag med starkt stopp",
     note: "Ersätter Wolfgangsee-natten. Ta båten ut till Herreninsel och Schloss Herrenchiemsee (Ludvig II:s praktslott). Lång dag totalt (~6–7h) – dela i etapper.",
-    map: gmap(["Uttendorf, Salzburg, Austria", "Prien am Chiemsee, Germany", "Rothenburg ob der Tauber, Germany"]),
+    map: gmap(["Uttendorf, Salzburg, Austria", "IONITY Salzburg, Austria", "Prien am Chiemsee, Germany", "IONITY Greding, Germany", "Rothenburg ob der Tauber, Germany"]),
     mapLabel: "Uttendorf → Salzburg → Chiemsee → Greding → Rothenburg",
     legs: [
       { a: "Uttendorf", b: "Salzburg", road: "B311 → Zell am See → A10", dt: "~10 mil · 1h30", chg: "IONITY Salzburg → 80%" },
@@ -266,7 +259,7 @@ export const DAYS = [
     title: "Rothenburg → Hamburg", base: "Hamburg (HafenCity)",
     drive: "ca 60–65 mil", vibe: "Längsta inlandsdagen",
     note: "Storstadsavslutning med fin symmetri mot Lübeck. Längsta inlandsdagen (~6h) – ~1h längre än till Lüneburg, men söndagen blir kortare i gengäld.",
-    map: gmap(["Rothenburg ob der Tauber, Germany", "Hamburg HafenCity, Germany"]),
+    map: gmap(["Rothenburg ob der Tauber, Germany", "IONITY Kassel, Germany", "IONITY Hannover, Germany", "Hamburg HafenCity, Germany"]),
     mapLabel: "Rothenburg → Kassel → Hannover → Hamburg",
     legs: [
       { a: "Rothenburg", b: "Würzburg", road: "A7 norrut", dt: "~8 mil · 1h00", chg: "Toppa innan start" },
@@ -294,7 +287,7 @@ export const DAYS = [
     coords: [58.4109, 15.6216],
     title: "Hamburg → Linköping", base: "Hemma i Linköping",
     drive: "ca 70–80 mil + färja", vibe: "Transport hem",
-    map: gmap(["Hamburg, Germany", "Puttgarden, Germany", "Rødby Færgehavn, Denmark", "Öresundsbron", "Linköping, Sweden"]),
+    map: gmap(["Hamburg, Germany", "Puttgarden, Germany", "Rødby Færgehavn, Denmark", "Öresundsbron", "IONITY Jönköping, Sweden", "Linköping, Sweden"]),
     mapLabel: "Hamburg → Puttgarden → Rødby → bron → Linköping",
     legs: [
       { a: "Hamburg", b: "Puttgarden", road: "A1 → B207", dt: "~9 mil · 1h05", chg: "Toppa nära Lübeck" },

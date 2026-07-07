@@ -7,6 +7,7 @@ import { BRAND, INK, MIST, MUTE, rgba } from "../lib/palette";
 import Collapsible from "./Collapsible";
 import MapButton from "./MapButton";
 import Weather from "./Weather";
+import WineryList from "./WineryList";
 
 const ICONS = {
   anchor: Anchor, grape: Grape, bike: Bike, mountain: Mountain,
@@ -137,6 +138,10 @@ export default function DayCard({ day, checklist }) {
             ))}
           </ul>
         </Collapsible>
+
+        {day.wineries && (
+          <WineryList wineries={day.wineries} allMap={day.wineriesMap} color={day.color} />
+        )}
 
         {day.tips && (
           <Collapsible label="Tips & alternativ" icon={Lightbulb} color={day.color}>

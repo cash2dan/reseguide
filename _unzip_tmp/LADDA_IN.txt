@@ -1,0 +1,55 @@
+RESEGUIDE – MINIMAL UPPDATERING (endast vinproducenter, rör INGET annat)
+===========================================================================
+
+Detta paket rör INTE dina redan inbyggda väder-/hemvy-filer. Det
+innehåller bara det som är nytt för vinproducent-funktionen.
+
+STEG 1 – Filer som ska SKRIVAS ÖVER (säkert, ingen konflikt):
+----------------------------------------------------------------
+  src/data/trip.js               → skriv över helt (ren reseplansdata,
+                                     rör inte väder-logik)
+  src/components/WineryList.jsx  → NY fil, lägg till (fanns inte innan)
+
+STEG 2 – Liten manuell ändring i src/components/DayCard.jsx
+----------------------------------------------------------------
+Rör INTE resten av filen. Gör bara dessa två små tillägg:
+
+A) Längst upp bland import-raderna, lägg till en ny rad:
+
+    import WineryList from "./WineryList";
+
+   (Om filen redan har denna rad från tidigare, skippa detta steg.)
+
+B) Leta upp sektionen som renderar "Se & tänka på" (Collapsible med
+   day.see), och direkt EFTER dess avslutande </Collapsible>-tagg,
+   lägg till dessa tre rader innan nästa sektion (day.tips):
+
+    {day.wineries && (
+      <WineryList wineries={day.wineries} allMap={day.wineriesMap} color={day.color} />
+    )}
+
+   Så här ser det ut i sitt sammanhang (för att veta var du är):
+
+    </Collapsible>
+
+    {day.wineries && (
+      <WineryList wineries={day.wineries} allMap={day.wineriesMap} color={day.color} />
+    )}
+
+    {day.tips && (
+      ...
+
+INSTRUKTION TILL CLAUDE CODE (klistra in rakt av):
+---------------------------------------------------
+Packa upp den här zip-filen. Kopiera src/data/trip.js och
+src/components/WineryList.jsx till motsvarande sökvägar i
+C:\Users\danie\Documents\Privat\Test\reseguide\src, skriv över
+befintliga filer. Ändra INTE några andra filer förutom att i
+src/components/DayCard.jsx lägga till importraden
+`import WineryList from "./WineryList";` (om den saknas) och lägga
+till renderingsblocket för {day.wineries && <WineryList .../>} direkt
+efter Collapsible-sektionen för "Se & tänka på", enligt LADDA_IN.txt.
+Rör inga andra delar av DayCard.jsx. Kör sedan npm run build för att
+verifiera att det kompilerar, och visa mig diffen innan du committar.
+
+Detta rör INTE väder, hemvy eller något annat du redan byggt in.
