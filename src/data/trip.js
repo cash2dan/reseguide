@@ -112,7 +112,7 @@ export const DAYS = [
       ["17:00–18:30", "Vinprovning hos vald producent (se lista)"],
       ["19:30", "Middag vid Mosel"],
     ],
-    links: [["Moselradweg", "https://www.moselradweg.de/"], ["Hyrcyklar Bernkastel-Kues", "https://www.bernkastel.de/tourismus/aktivurlaub/radfahren"]],
+    links: [["Moselradweg", "https://www.moselradweg.de/"], ["Hyrcyklar på karta", gsearch("Fahrradverleih Bernkastel-Kues")]],
   },
   {
     n: 4, date: "Mån 13 juli", iso: "2026-07-13", color: "#6E7F5B", icon: "wine",
