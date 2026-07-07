@@ -92,6 +92,7 @@ export const DAYS = [
       "Moselradweg är asfalterad och nästan helt flack – funkar utan racervana.",
       "Korta/förläng efter ork: Zeltingen t.o.r. = lätt dag, Traben-Trarbach = längre.",
       "Många vinbönder tar emot för provning direkt vid gården – boka i förväg.",
+      "Hyrcyklar: Zweirad Schmitt (Bernkastel, Burgstraße 1) och Aktiv & Natur (Kues, Gestade 18) – boka gärna kvällen innan, ta med legitimation.",
     ],
     wineries: [
       { name: "Dr. Loosen", village: "Bernkastel-Kues", note: "Regionens mest kända storhet. Tillgängligt vinotek, bra startpunkt om ni bara hinner ett stopp.", appt: false, map: gsearch("Weingut Dr. Loosen Bernkastel-Kues"), web: "https://drloosen.com/en" },
@@ -111,7 +112,7 @@ export const DAYS = [
       ["17:00–18:30", "Vinprovning hos vald producent (se lista)"],
       ["19:30", "Middag vid Mosel"],
     ],
-    links: [["Moselradweg", "https://www.moselradweg.de/"]],
+    links: [["Moselradweg", "https://www.moselradweg.de/"], ["Hyrcyklar Bernkastel-Kues", "https://www.bernkastel.de/tourismus/aktivurlaub/radfahren"]],
   },
   {
     n: 4, date: "Mån 13 juli", iso: "2026-07-13", color: "#6E7F5B", icon: "wine",
