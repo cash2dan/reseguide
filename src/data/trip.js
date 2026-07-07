@@ -86,6 +86,7 @@ export const DAYS = [
     coords: [49.9137, 7.0689],
     title: "Moseldalen – cykeldag", base: "Bernkastel-Kues (2/3)",
     drive: "lokal cykeltur, ingen bil", vibe: "Full aktivitetsdag, lugnt tempo",
+    stay: { name: "Roussel Hotel Restaurant, Bernkastel-Kues", meal: "Frukost ingår", map: gsearch("Roussel Hotel Restaurant Bernkastel-Kues") },
     map: gmap(["Bernkastel-Kues, Germany", "Zeltingen-Rachtig, Germany", "Ürzig, Germany", "Traben-Trarbach, Germany", "Bernkastel-Kues, Germany"]),
     mapLabel: "Cykelslinga: Zeltingen → Ürzig → Traben-Trarbach → åter",
     see: [
